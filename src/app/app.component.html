@@ -1,0 +1,19 @@
+<form [formGroup]="basicForm">
+
+    <label>Name</label>
+    <input type="text" id="name" [formControlName]="'name'" placeholder="Name">
+    <label *ngIf="basicForm.get('name').touched && basicForm.get('name').hasError('required')"
+        style="font-size: 16px; color: red;">Name field is required</label>
+
+    <br>
+    <label>Email</label>
+    <input type="text" id="email" [formControlName]="'email'" placeholder="Email">
+
+    <div *ngIf="basicForm.get('email').touched">
+        <label *ngIf="basicForm.get('email').hasError('pattern')" style="font-size: 16px; color: red;">Invalid
+            email</label>
+        <label *ngIf="basicForm.get('email').hasError('required')" style="font-size: 16px; color: red;">Email field is
+            required</label>
+    </div>
+
+</form>
